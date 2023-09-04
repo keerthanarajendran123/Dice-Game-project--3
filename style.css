@@ -1,0 +1,81 @@
+body{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height:80vh;
+    background-color:purple;
+}
+.dice-game-container{
+    display: flex;
+    flex-direction: column;
+}
+.score-main-box{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+h1,h2{
+   text-align: center;
+   color: white;
+   font-size:xx-large;
+   
+}
+.dice-container{
+    text-align: center;
+}
+.score-box-container{
+   position: relative;
+}
+.player{
+    position: absolute;
+    right:240px;
+    top:50px;
+    font-size: xx-large;
+    color: white;
+}
+#player{
+    position: absolute;
+    left:260px;
+    top:50px;
+    font-size: xx-large;
+    color: white;
+}
+#player-2-score-update{
+    position: absolute;
+    left:300px;
+    top:150px;
+    color: white;
+    font-size:xx-large;
+}
+#player-1-score-update{
+    position: absolute;
+    right:285px;
+    top:150px;
+    color: white;
+    font-size:xx-large;
+}
+#roll-player-1{
+    position: absolute;
+    left:240px;
+    height:50px;
+    top:480px;
+    font-weight: bolder;
+    font-size: x-large;
+}
+#roll-player-2{
+    position: absolute;
+    right:225px;
+    height:50px;
+    top:480px;
+    font-weight: bolder;
+    font-size: x-large;
+}
+#reset-btn{
+     position: absolute;
+     left:650px;
+     bottom:10%;
+     height:50px;
+     width:100px;
+    font-size: x-large;
+    font-weight: bold;
+}
