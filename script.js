@@ -24,7 +24,7 @@ rollPlayer1Btn.addEventListener('click', () => rollDice(1));
 rollPlayer2Btn.addEventListener('click', () => rollDice(2));
 resetBtn.addEventListener('click', resetGame);
 
-// Disable Player 2's roll button at the start
+// Disabling Player 2's roll button at the start
 rollPlayer2Btn.disabled = true;
 
 function rollDice(player) {
