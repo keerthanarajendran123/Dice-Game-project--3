@@ -3,34 +3,23 @@ let player2Score = 0;
 let player1Turn = true;
 let gameActive = true;
 
-// Inside Score Text (Updated)
 const player1ScoreUpdate = document.getElementById('player-1-score-update');
 const player2ScoreUpdate = document.getElementById('player-2-score-update');
-
-// Message Text
 const messageText = document.getElementById('message');
-
-// Dice Image
 const diceImage = document.getElementById('dice-image');
-
-// Separate "Roll Now" buttons for each player
 const rollPlayer1Btn = document.getElementById('roll-player-1');
 const rollPlayer2Btn = document.getElementById('roll-player-2');
-
-// Reset Button
 const resetBtn = document.getElementById('reset-btn');
+rollPlayer2Btn.disabled = true;
 
 rollPlayer1Btn.addEventListener('click', () => rollDice(1));
 rollPlayer2Btn.addEventListener('click', () => rollDice(2));
 resetBtn.addEventListener('click', resetGame);
 
-// Disabling Player 2's roll button at the start
-rollPlayer2Btn.disabled = true;
-
 function rollDice(player) {
     if (gameActive) {
         const randomNumber = Math.floor(Math.random() * 6) + 1;
-        diceImage.src = `images/dice-${randomNumber}.png`; 
+        diceImage.src = `images/dice-${randomNumber}.png`;
 
         if (player === 1) {
             player1Score += randomNumber;
@@ -42,8 +31,10 @@ function rollDice(player) {
 
         if (player1Score >= 30) {
             messageText.textContent = "😎PLAYER 1 WINS!🥳";
+            displayBalloons(12);
         } else if (player2Score >= 30) {
             messageText.textContent = "😎PLAYER 2 WINS!🥳";
+            displayBalloons(12); 
         } else {
             player1Turn = !player1Turn;
             updateMessage();
@@ -87,6 +78,31 @@ function resetGame() {
     diceImage.src = 'images/dice-1.png';
     gameActive = true;
     rollPlayer1Btn.disabled = false;
-    rollPlayer2Btn.disabled = true; 
+    rollPlayer2Btn.disabled = true;
 }
 
+function getRandomColor() {
+    const colors = ['#ff00cc', '#00ffcc', '#ffcc00', '#cc00ff', '#00ccff']; 
+    return colors[Math.floor(Math.random() * colors.length)];
+}
+
+function displayBalloons(numBalloons) {
+    for (let i = 0; i < numBalloons; i++) {
+        const balloon = document.createElement('div');
+        balloon.classList.add('balloon');
+
+        const thread = document.createElement('div');
+        thread.classList.add('thread');
+
+        balloon.appendChild(thread);
+
+        balloon.style.left = `${Math.random() * window.innerWidth}px`; 
+        balloon.style.background = getRandomColor();
+
+        document.body.appendChild(balloon);
+
+        setTimeout(() => {
+            document.body.removeChild(balloon);
+        }, 8000); 
+    }
+}
